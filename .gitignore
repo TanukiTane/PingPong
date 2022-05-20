@@ -1,0 +1,9 @@
+Intermediate
+Saved
+Binaries
+DerivedDataCach
+Content/StarterContent
+TankogeddonBuild
+.vs
+*.sln
+git rm -r --cached .Starter Content
