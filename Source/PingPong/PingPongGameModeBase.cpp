@@ -4,6 +4,7 @@
 #include "PingPongGameModeBase.h"
 #include "PingPongPlayerController.h"
 #include "PingPongPlayerPawn.h"
+#include "Scoreable.h"
 #include "Kismet/GameplayStatics.h"
 
 APingPongGameModeBase::APingPongGameModeBase()
@@ -76,5 +77,18 @@ void APingPongGameModeBase::PostLogin(APlayerController* NewPlayer)
 	else
 	{
 		UE_LOG(LogTemp, Error, TEXT("Start position not setted in PingPongGameMode!"));
+	}
+}
+
+void APingPongGameModeBase::NotifyActorWasCollision(AActor* Actor)
+{
+	if (IScoreable* Scoreable = Cast<IScoreable>(Actor))
+	{
+		APingPongPlayerController* PlayerController = Cast<APingPongPlayerController>(GetWorld()->GetFirstPlayerController());
+		if (PlayerController->GetPawn())
+		{
+			PlayerController->Scores += Scoreable->GetScores();
+			//UE_LOG(LogPingPong, Log, TEXT("New player scores: %d"), PlayerController->Scores);
+		}
 	}
 }

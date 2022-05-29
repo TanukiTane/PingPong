@@ -33,6 +33,9 @@ public:
 
 	virtual void SetupInputComponent() override;
 
+	UPROPERTY()
+		int32 Scores;
+
 protected:
 	UFUNCTION()
 		void MoveRight(float AxisValue);
