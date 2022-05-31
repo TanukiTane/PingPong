@@ -61,8 +61,7 @@ void APingPongGameModeBase::PostLogin(APlayerController* NewPlayer)
 	APingPongPlayerPawn* newPawn = Cast<APingPongPlayerPawn>(NewPlayer->GetPawn());
 	if (!newPawn)
 		{
-			newPawn =
-				world->SpawnActor<APingPongPlayerPawn>(DefaultPawnClass);
+			newPawn = world->SpawnActor<APingPongPlayerPawn>(DefaultPawnClass);
 		}
 
 	if (startPos && newPawn)
@@ -88,7 +87,7 @@ void APingPongGameModeBase::NotifyActorWasCollision(AActor* Actor)
 		if (PlayerController->GetPawn())
 		{
 			PlayerController->Scores += Scoreable->GetScores();
-			//UE_LOG(LogPingPong, Log, TEXT("New player scores: %d"), PlayerController->Scores);
+			//UE_LOG(LogTemp, TEXT("New player scores: %d"), PlayerController->Scores);
 		}
 	}
 }
